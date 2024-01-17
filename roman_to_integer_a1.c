@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-//I replaced all break statements with 'continue' keyword to bring down the runtime from 5ms to 2 ms
+//I replaced all break statements with 'continue' keyword to bring down the runtime from 5ms to 2ms
 int romanToInt(char* s) {
     int sum = 0;
     for(int i = 0; i < strlen(s); i++) {
@@ -74,5 +74,7 @@ int main() {
     int result = romanToInt(str);
 
     printf("\nThe decimal number is : %d\n", result);
+
+    free(str);
     return 0;
 }
