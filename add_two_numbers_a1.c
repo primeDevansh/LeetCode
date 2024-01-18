@@ -1,6 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+/*
+ * The logic is cool for small numbers (represented as linked lists) but fails miserably when applied for large numbers because of the size limitation of an integer variable.
+ */
+
 struct ListNode {
     int val;
     struct ListNode *next;
