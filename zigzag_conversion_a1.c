@@ -29,9 +29,7 @@ char* convert(char* s, int numRows) {
                     l = 1;
                 }
                 else {
-                    if(offset[0] == 1)
-                        offset[0] = 0;
-                    offset[1] = OFFSET - offset[0];
+                    offset[1] += 2;
                     j += offset[1];
                     l = 0;
                 }
