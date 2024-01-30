@@ -2,6 +2,10 @@
 #include <stdlib.h>
 
 char* convert(char* s, int numRows) {
+    if(numRows == 1) {
+        return s;
+    }
+
     int i, j, k, l, s_len = 0;
     int OFFSET;
     int* offset = (int*)malloc(2 * sizeof(int));
@@ -14,27 +18,21 @@ char* convert(char* s, int numRows) {
     offset[1] = 0;
 
     for(i = 0, k = 0; i < numRows; i++) {
-        for(j = i, l = 0; j < s_len; k++) {
+        for(j = i, l = 0; j < s_len; k++, j++) {
             result[k] = s[j];
-            if(numRows == 1 || OFFSET == 0)
-                j++;
-            else if(i == 0 || i == (numRows - 1))
+            if(i == 0 || i == (numRows - 1))
                 j += OFFSET;
-            else {
-                if(l == 0) {
-                    offset[0] -= 2;
-                    if(offset[0] == 0)
-                        offset[0] = 1;
-                    j += offset[0];
-                    l = 1;
-                }
-                else {
-                    offset[1] += 2;
-                    j += offset[1];
-                    l = 0;
-                }
+            else if(l == 0) {
+                j += offset[l];
+                l = 1;
+            }
+            else if(l == 1) {
+                j += offset[l];
+                l = 0;
             }
         }
+        offset[0] -= 2;
+        offset[1] += 2;
     }
     result[k] = '\0';
     return result;
